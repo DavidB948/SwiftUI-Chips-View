@@ -10,5 +10,6 @@ import SwiftUI
 let FOREGROUND_COLOR = Color("Foreground")
 let BACKGROUND_COLOR = Color("Background")
 
+let FONT_SIZE: CGFloat = 16
 
 

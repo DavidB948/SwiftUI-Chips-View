@@ -37,7 +37,7 @@ struct Home: View {
             
             //Add Button
             Button {
-                addChip(chips: chips, text: text, fontSize: 16, maxLimit: 150) { alert, chip in
+                addChip(chips: chips, text: text, fontSize: FONT_SIZE, maxLimit: 150) { alert, chip in
                     if alert {
                         showAlert.toggle()
                     } else {

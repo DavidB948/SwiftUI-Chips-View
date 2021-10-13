@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ChipView: View {
     var titleString = "Add some chips"
-    var fontSize: CGFloat = 16
+    var fontSize: CGFloat = FONT_SIZE
     var maxLimit: Int
     @Binding var chips: [Chip]
     
@@ -40,6 +40,15 @@ struct ChipView: View {
                 RoundedRectangle(cornerRadius: 8)
                     .strokeBorder(FOREGROUND_COLOR.opacity(0.15), lineWidth: 1)
             )
+            .animation(.easeInOut, value: chips)
+            .overlay(
+            //Limit
+                Text("\(getSize(chips: chips))/\(maxLimit)")
+                    .font(.system(size: 13, weight: .semibold))
+                    .foregroundColor(FOREGROUND_COLOR)
+                    .padding(12),
+                alignment: .bottomTrailing
+            )
         }
     }
     
@@ -52,15 +61,6 @@ struct ChipView: View {
             .background(
                 Capsule()
                     .fill(FOREGROUND_COLOR)
-            )
-            .animation(.easeInOut, value: chips)
-            .overlay(
-            //Limit
-                Text("\(getSize(chips: chips))/\(maxLimit)")
-                    .font(.system(size: 13, weight: .semibold))
-                    .foregroundColor(FOREGROUND_COLOR)
-                    .padding(12),
-                alignment: .bottomTrailing
             )
             .foregroundColor(BACKGROUND_COLOR)
             .lineLimit(1)
